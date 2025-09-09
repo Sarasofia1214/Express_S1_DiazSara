@@ -1,0 +1,156 @@
+openapi: 3.0.3
+info:
+  title: API Campuslands - Campers
+  version: "1.0.0"
+  description: |
+    API para la gestión de **Campers** en Campuslands.
+    Permite crear, listar, actualizar y eliminar campers.
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor local de desarrollo
+tags:
+paths:
+  /campers:
+    get:
+      summary: Obtener todos los campers
+      description: Devuelve la lista completa de campers almacenados en la base de datos.
+      responses:
+        "200":
+          description: Lista de campers obtenida con éxito
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Camper"
+        "500":
+          description: Error interno al obtener campers
+
+    post:
+      summary: Crear un nuevo camper
+      description: Registra un nuevo camper en la base de datos.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Camper"
+      responses:
+        "201":
+          description: Camper creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Camper"
+        "400":
+          description: Datos inválidos
+
+  /campers/{id}:
+    get:
+      summary: Obtener un camper por ID
+      description: Devuelve la información de un camper específico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único del camper en MongoDB
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Camper encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Camper"
+        "404":
+          description: Camper no encontrado
+
+    put:
+      summary: Actualizar un camper
+      description: Permite modificar los datos de un camper específico.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único del camper en MongoDB
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Camper"
+      responses:
+        "200":
+          description: Camper actualizado exitosamente
+        "404":
+          description: Camper no encontrado
+
+    delete:
+      summary: Eliminar un camper
+      description: Elimina un camper por su ID.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: ID único del camper en MongoDB
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Camper eliminado exitosamente
+        "404":
+          description: Camper no encontrado
+
+components:
+  schemas:
+    Camper:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: "6892b70b1475817e64a19938"
+        ID:
+          type: string
+          example: "6677889501"
+        Nombre:
+          type: string
+          example: "Andrés Felipe"
+        Apellido:
+          type: string
+          example: "Garcia Vargas"
+        Direccion:
+          type: string
+          example: "Cra 15 #18-09"
+        Acudiente:
+          type: string
+          example: "María Garcia"
+        Numero de celular:
+          type: integer
+          example: 3152334455
+        Numero de telefono fijo:
+          type: integer
+          example: 6123456789
+        Estado:
+          type: object
+          properties:
+            Inscrito:
+              type: boolean
+              example: true
+            Aprobado:
+              type: boolean
+              example: false
+            Riesgo:
+              type: boolean
+              example: true
+        grupo:
+          type: string
+          example: "P_2"
+        notas:
+          type: object
+          example: {}
+
+          
