@@ -8,13 +8,10 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middlewares
 app.use(express.json());
 
-// Rutas
 app.use("/api/campers", camperRoutes);
 
-// Conectar a Mongo y levantar servidor
 connectDB()
   .then(() => {
     app.listen(PORT, () => {
