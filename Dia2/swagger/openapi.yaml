@@ -9,10 +9,16 @@ info:
 servers:
   - url: http://localhost:3000/api
     description: Servidor local de desarrollo
+
 tags:
+  - name: Campers
+    description: Operaciones relacionadas con campers
+
 paths:
   /campers:
     get:
+      tags:
+        - Campers
       summary: Obtener todos los campers
       description: Devuelve la lista completa de campers almacenados en la base de datos.
       responses:
@@ -28,6 +34,8 @@ paths:
           description: Error interno al obtener campers
 
     post:
+      tags:
+        - Campers
       summary: Crear un nuevo camper
       description: Registra un nuevo camper en la base de datos.
       requestBody:
@@ -48,6 +56,8 @@ paths:
 
   /campers/{id}:
     get:
+      tags:
+        - Campers
       summary: Obtener un camper por ID
       description: Devuelve la información de un camper específico.
       parameters:
@@ -68,6 +78,8 @@ paths:
           description: Camper no encontrado
 
     put:
+      tags:
+        - Campers
       summary: Actualizar un camper
       description: Permite modificar los datos de un camper específico.
       parameters:
@@ -90,6 +102,8 @@ paths:
           description: Camper no encontrado
 
     delete:
+      tags:
+        - Campers
       summary: Eliminar un camper
       description: Elimina un camper por su ID.
       parameters:
@@ -152,5 +166,3 @@ components:
         notas:
           type: object
           example: {}
-
-          
