@@ -1,11 +1,11 @@
 import { ObjectId } from "mongodb";
-import { getDB } from "../db.js";  // función que devuelve la conexión
+import { getDB } from "../db.js";  
 
 // GET /campers
 export const getAllCampers = async (req, res) => {
   try {
     const db = getDB();
-    const campers = await db.collection("campers").find().toArray();
+    const campers = await db.collection("estudiantes").find().toArray();
     res.json(campers);
   } catch (err) {
     res.status(500).json({ error: "Error al obtener campers" });
@@ -17,7 +17,7 @@ export const getCamperById = async (req, res) => {
   try {
     const db = getDB();
     const camper = await db
-      .collection("campers")
+      .collection("estudiantes")
       .findOne({ _id: new ObjectId(req.params.id) });
 
     if (!camper) {
@@ -33,7 +33,7 @@ export const getCamperById = async (req, res) => {
 export const createCamper = async (req, res) => {
   try {
     const db = getDB();
-    const result = await db.collection("campers").insertOne(req.body);
+    const result = await db.collection("estudiantes").insertOne(req.body);
     res.status(201).json({ _id: result.insertedId, ...req.body });
   } catch (err) {
     res.status(500).json({ error: "Error al crear camper" });
@@ -46,7 +46,7 @@ export const updateCamper = async (req, res) => {
   try {
     const db = getDB();
     const result = await db
-      .collection("campers")
+      .collection("estudiantes")
       .updateOne(
         { _id: new ObjectId(req.params.id) },
         { $set: req.body }
@@ -66,7 +66,7 @@ export const deleteCamper = async (req, res) => {
   try {
     const db = getDB();
     const result = await db
-      .collection("campers")
+      .collection("estudiantes")
       .deleteOne({ _id: new ObjectId(req.params.id) });
 
     if (result.deletedCount === 0) {

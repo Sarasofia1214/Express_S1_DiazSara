@@ -5,7 +5,10 @@ info:
   description: |
     API para la gestión de **Campers** en Campuslands.
     Permite crear, listar, actualizar y eliminar campers.
-
+  contact: 
+    name: Sara Sofia Diaz Rodriguez
+    url: https://github.com/Sarasofia1214/Express_S1_DiazSara.git
+    
 servers:
   - url: http://localhost:3000/api
     description: Servidor local de desarrollo

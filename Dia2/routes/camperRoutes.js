@@ -9,8 +9,6 @@ import {
 
 const router = Router();
 
-console.log("📌 camperView.js cargado correctamente");
-
 router.get("/", getAllCampers);
 router.post("/", createCamper);
 router.get("/:id", getCamperById);
