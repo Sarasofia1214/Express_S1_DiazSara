@@ -11,10 +11,10 @@ export class UserRepository{
     async findById(id){
         return this.User.findById(id);
     }
-    async update(id,data){
-        return this.User.update(id,data,{new:true});
+    async updateUser(id,data){
+        return this.User.update(id, data, { new: true, runValidators: true });
     }
-    async delete(id){
-        return this.User.findByIdAndDelete(id);
+    async deleteUser(id){
+        return this.User.delete(id);
     }
 }
