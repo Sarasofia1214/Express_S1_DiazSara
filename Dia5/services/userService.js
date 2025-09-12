@@ -6,8 +6,8 @@ export class UserService{
     async createUser(dto){
         return this.repo.createOne(dto);
     }
-    async listUser(){
-        return this.repo.findAll();
+    async listUser() {
+        return this.repo.findAll().limit(10);
     }
     async getUserById(id){
         return this.repo.findById(id);

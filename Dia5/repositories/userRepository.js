@@ -1,23 +1,20 @@
 export class UserRepository{
-    constructor(UserModel){
-        this.User=UserModel; // User es un atributo de userRepository
+    constructor(userModel){
+        this.User = userModel
     }
-    async create (data){
+    async createOne(data){
         return this.User.create(data);
     }
     async findAll(){
         return this.User.find();
     }
     async findById(id){
-        return this.User.findById(new id)
+        return this.User.findById(id);
     }
-    async findByEmail(email){
-        
+    async update(id,data){
+        return this.User.update(id,data,{new:true});
     }
-    async updateById(id,data){
-        return this.User.updateById()
-    }
-    async deleteById(){
-
+    async delete(id){
+        return this.User.findByIdAndDelete(id);
     }
 }
