@@ -1,21 +1,21 @@
 export class UserService{
+    
     constructor(userRepository){
-        this.repo=userRepository
+        this.repo = userRepository;
     }
-
     async createUser(dto){
-        /*
-        Lógica para cuando se ingrese el correo
-        pues no esté existente...
-         */
+        return this.repo.createOne(dto);
     }
     async listUser(){
-        /*
-        Limitar a exportar máximo 10 */
+        return this.repo.findAll();
     }
-    async getUser(id){
+    async getUserById(id){
         return this.repo.findById(id);
     }
-    async updateUser(id,dto){}
-    async deleteUser(id){}
+    async updateUser(id,data){
+        return this.repo.update(id,data);
+    }
+    async deleteUser(id){
+        return this.repo.delete(id);
+    }
 }

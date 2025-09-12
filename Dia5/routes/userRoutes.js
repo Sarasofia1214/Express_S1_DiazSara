@@ -1,11 +1,12 @@
-import { Router } from "express";
-import { UserController } from "../crotrollers/userController";
+import {Router} from "express"
 
-export function buildUserRoute(userController){
+export function buildUserRouter(UserController){
     const router = Router();
-    router.get("/",UserController.list);
-    router.get("/:id",UserControllers.get);
-    router.post("/",UserControllers.create);
-    router.put("/:id",UserControllers.update);
-    router.delete("/:id",UserControllers.delete);
+    router.get('/',UserController.list)
+    router.get('/:id',UserController.get)
+    router.post('/',UserController.create)
+    router.put('/:id',UserController.update)
+    router.delete('/:id',UserController.delete)
+
+    return router;
 }

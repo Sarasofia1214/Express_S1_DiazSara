@@ -1,8 +1,9 @@
 import mongoose from "mongoose";
 //se declara en una variable 
 const UserSchema = new mongoose.Schema ({
-    name:{type:String, requiered:true,trim:true},
-    email:{type:String,requiered:true,unique:true,lowercase:true,trim:true},
+name: { type: String, required: true, trim: true },
+email: { type: String, required: true, unique: true, lowercase: true, trim: true },
+
     age:{type:Number,min:0}
 }, {timestamps:true}); // Para que indique la fecha de creación
 
@@ -22,4 +23,4 @@ class UserClass{
 UserSchema.loadClass(UserClass);
 
 // Ya que primero se crea el schema, luego la clase y luego se realiza la anidación
-export const UseModel=mongoose.model("User",UserSchema)
+export const UserModel=mongoose.model("User",UserSchema)
